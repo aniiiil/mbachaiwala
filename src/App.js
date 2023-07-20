@@ -1,9 +1,11 @@
-
+import "./styles/App.scss";
+import "./styles/introBanner.scss";
+import IntroBanner from "./components/IntroBanner";
 function App() {
   return (
-    <div className="App">
-    
-    </div>
+    < >
+    <IntroBanner/>
+    </>
   );
 }
 

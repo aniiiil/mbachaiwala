@@ -11,12 +11,16 @@ import albumImg from "./assets/mba-cares.gif";
 import baratImg from "./assets/image1.png";
 import chaiWalaImg from "./assets/image3.png";
 import Footer from "./components/Footer";
+import Other from "./components/Other";
+
 
 import "./styles/App.scss";
 import "./styles/introBanner.scss";
 import "./styles/section.scss";
 import "./styles/footer.scss";
+import "./styles/other.scss";
 import "./styles/mediaQuery.scss";
+import { useEffect } from "react";
 
 const yellow = "#fff100",
   pink = "#ed1e79",
@@ -35,6 +39,40 @@ function App() {
     barat,
     chaiwala,
   } = data;
+
+  useEffect(()=>{
+    window.addEventListener("mousemove",funCursor);
+      return()=>{
+        window.removeEventListener("mousemove",funCursor);
+    
+      }
+    },[]);
+    
+const funCursor = (e) => {
+const cursor=document.querySelector(".cursor");
+
+cursor.style.top=`${e.pageY - 14}px`;
+cursor.style.left=`${e.pageX - 14 }px`;
+
+
+const element= e.target;
+
+if (element.getAttribute("cursor-pointer")) {
+  cursor.classList.add("cursorHover");
+  
+}else if(element.getAttribute("cursor-pointermini")){
+  cursor.classList.add("cursorHoverMini");
+  
+}else{
+  cursor.classList.remove("cursorHover");
+  cursor.classList.remove("cursorHoverMini");
+
+}
+
+};
+
+
+
 
   return (
     <>
@@ -148,6 +186,7 @@ function App() {
       />
 
       <Footer/>
+      <Other/>
     </>
   );
 }
